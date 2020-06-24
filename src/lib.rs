@@ -95,7 +95,7 @@
 //!                 // Take the sink from the actor state
 //!                 let mut sink = with_ctx(|actor: &mut Self, _| actor.sink.take())
 //!                     .expect("Sink to be present");
-//!                 
+//!
 //!                 // Send the request
 //!                 let res = sink.send(msg).await;
 //!
@@ -251,7 +251,7 @@ pub trait FutureInterop<A: Actor>: Future + Sized {
     where
         Self: 'static,
     {
-        Box::new(self.interop_actor(actor))
+        Box::pin(self.interop_actor(actor))
     }
 }
 
